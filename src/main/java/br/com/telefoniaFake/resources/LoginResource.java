@@ -7,6 +7,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/discador/login")
 public class LoginResource {
@@ -14,7 +15,8 @@ public class LoginResource {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public LoginResultDTO login(LoginDTO login) {
-		return new LoginResultDTO("CHAVEMUITOBOACONFIA", "", 1, "Teste da Silva");
+	public Response login(LoginDTO login) {
+		return Response.ok(new LoginResultDTO(
+			"CHAVEMUITOBOACONFIA", "", 1, "Teste da Silva")).build() ;
 	}
 }
