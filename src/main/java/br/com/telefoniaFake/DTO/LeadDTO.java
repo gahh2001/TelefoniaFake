@@ -26,6 +26,4 @@ public class LeadDTO {
 	public void setContactDate( Long contactDate ) {
 		this.contactDate = contactDate;
 	}
-
-	
 }

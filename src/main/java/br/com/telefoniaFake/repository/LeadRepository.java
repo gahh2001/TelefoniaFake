@@ -10,9 +10,15 @@ import jakarta.transaction.Transactional;
 public class LeadRepository implements PanacheRepository<Lead> {
 	
 	@Transactional
-	public Lead create(LeadDTO leadDTO) {
-		Lead lead = new Lead(leadDTO.getLeadId(), leadDTO.getPhones().toString(), leadDTO.getContactDate());
+	public Lead create(LeadDTO leadDTO, String campaignId ) {
+		Lead lead = new Lead(leadDTO.getLeadId(), campaignId,
+				leadDTO.getPhones().toString(), leadDTO.getContactDate());
 		persist(lead);
 		return lead;
+	}
+
+	@Transactional
+	public void remove( Integer leadId, String campaignId ) {
+		delete( "delete from Lead l where l.leadId = ?1 and l.campaignId = ?2", leadId, campaignId );
 	}
 }

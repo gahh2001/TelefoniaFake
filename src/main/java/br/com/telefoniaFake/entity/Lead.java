@@ -7,14 +7,17 @@ import jakarta.persistence.Entity;
 public class Lead extends PanacheEntity {
 
 	private Integer leadId;
+	private String campaignId;
 	private String phones;
 	private Long contactDate;
 
 	public Lead() {
 	}
 
-	public Lead( Integer leadId, String phones, Long contactDate ) {
+	public Lead( Integer leadId, String campaignId, String phones,
+			Long contactDate ) {
 		this.leadId = leadId;
+		this.campaignId = campaignId;
 		this.phones = phones;
 		this.contactDate = contactDate;
 	}
@@ -37,6 +40,10 @@ public class Lead extends PanacheEntity {
 	public void setContactDate( Long contactDate ) {
 		this.contactDate = contactDate;
 	}
-	
-
+	public String getCampaignId() {
+		return campaignId;
+	}
+	public void setCampaignId( String campaignId ) {
+		this.campaignId = campaignId;
+	}
 }
