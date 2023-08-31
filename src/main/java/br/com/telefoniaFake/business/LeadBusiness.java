@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.telefoniaFake.DTO.CampaingDTO;
 import br.com.telefoniaFake.DTO.CampaingResultDTO;
 import br.com.telefoniaFake.DTO.LeadDTO;
+import br.com.telefoniaFake.DTO.LimpezaCampanhaTelefoniaDTO;
 import br.com.telefoniaFake.DTO.RemocaoTelefoniaDTO;
 import br.com.telefoniaFake.DTO.TelefoniaPadraoRemoveResultDTO;
 import br.com.telefoniaFake.entity.Lead;
@@ -43,5 +44,11 @@ public class LeadBusiness {
 			totalRemoved++;
 		}
 		return new TelefoniaPadraoRemoveResultDTO( leadsToRemove.getCampaignId(), totalRemoved, "" );
+	}
+
+	public TelefoniaPadraoRemoveResultDTO cleanCampign( LimpezaCampanhaTelefoniaDTO campaign ) {
+		Long totalRemoved = 0L;
+		totalRemoved = this.leadRepository.cleanCampaign( campaign.getCampaignId() );
+		return new TelefoniaPadraoRemoveResultDTO( campaign.getCampaignId(), totalRemoved.intValue(), "");
 	}
 }

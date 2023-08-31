@@ -21,4 +21,11 @@ public class LeadRepository implements PanacheRepository<Lead> {
 	public void remove( Integer leadId, String campaignId ) {
 		delete( "delete from Lead l where l.leadId = ?1 and l.campaignId = ?2", leadId, campaignId );
 	}
+
+	@Transactional
+	public Long cleanCampaign( String campaignCode ) {
+		Long teste = 0L;
+		teste =  delete( "delete from Lead l where l.campaignId = ?1", campaignCode );
+		return teste;
+	}
 }

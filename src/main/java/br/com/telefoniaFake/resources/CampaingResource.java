@@ -2,6 +2,7 @@ package br.com.telefoniaFake.resources;
 
 import br.com.telefoniaFake.DTO.CampaingDTO;
 import br.com.telefoniaFake.DTO.CampaingResultDTO;
+import br.com.telefoniaFake.DTO.LimpezaCampanhaTelefoniaDTO;
 import br.com.telefoniaFake.DTO.RemocaoTelefoniaDTO;
 import br.com.telefoniaFake.DTO.TelefoniaPadraoRemoveResultDTO;
 import br.com.telefoniaFake.business.LeadBusiness;
@@ -33,4 +34,13 @@ public class CampaingResource {
 	public TelefoniaPadraoRemoveResultDTO removeMailing( RemocaoTelefoniaDTO leadsToRemove ) {
 		return this.leadBusiness.removeMailing( leadsToRemove );
 	}
+
+	@POST
+	@Path( "/limpar-campanha" )
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	public TelefoniaPadraoRemoveResultDTO cleanCampign( LimpezaCampanhaTelefoniaDTO campaign ) {
+		return this.leadBusiness.cleanCampign( campaign );
+	}
+
 }
