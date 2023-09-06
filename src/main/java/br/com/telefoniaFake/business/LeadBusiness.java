@@ -1,5 +1,6 @@
 package br.com.telefoniaFake.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.telefoniaFake.DTO.CampaingDTO;
@@ -34,7 +35,12 @@ public class LeadBusiness {
 				}
 			}
 		}
-		return new CampaingResultDTO(campaing.getCampaignId(), totalPersisted, error);
+		List< Integer > notIntegrateds = new ArrayList<>();
+		if ("5".equals( campaing.getCampaignId() ) ) {
+			notIntegrateds.add( 446120 );
+			totalPersisted = 0;
+		}
+		return new CampaingResultDTO(campaing.getCampaignId(), totalPersisted, error, notIntegrateds);
 	}
 
 	public TelefoniaPadraoRemoveResultDTO removeMailing( RemocaoTelefoniaDTO leadsToRemove ) {

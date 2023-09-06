@@ -1,24 +1,28 @@
 package br.com.telefoniaFake.DTO;
 
+import java.util.List;
+
 public class CampaingResultDTO {
 	
-	private String campaingId;
+	private String campaignId;
 	private Integer totalIntegratedLeads;
 	private String error;
+	private List< Integer > errorLeads;
 
 	public CampaingResultDTO( String campaingId, Integer totalIntegratedLeads,
-			String error ) {
-		this.campaingId = campaingId;
+			String error, List< Integer > leadsNaoIntegrados ) {
+		this.campaignId = campaingId;
 		this.totalIntegratedLeads = totalIntegratedLeads;
 		this.error = error;
+		this.errorLeads = leadsNaoIntegrados;
 	}
 
-	public String getCampaingId() {
-		return campaingId;
+	public String getCampaignId() {
+		return campaignId;
 	}
 
-	public void setCampaingId( String campaingId ) {
-		this.campaingId = campaingId;
+	public void setCampaignId( String campaingId ) {
+		this.campaignId = campaingId;
 	}
 
 	public Integer getTotalIntegratedLeads() {
@@ -35,5 +39,13 @@ public class CampaingResultDTO {
 
 	public void setError( String error ) {
 		this.error = error;
+	}
+
+	public List< Integer > getErrorLeads() {
+		return errorLeads;
+	}
+
+	public void setErrorLeads( List< Integer > leadsNaoIntegrados ) {
+		this.errorLeads = leadsNaoIntegrados;
 	}
 }
